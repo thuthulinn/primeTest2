@@ -2,7 +2,6 @@
    <property name = "test.dir" location = "main" />
    <property name = "srcdir" location = "src" />
    <property name = "result.dir" value = "result" />
-   <property name = "full-compile" value = "true" />
    <property name="LIB_HOME" value="D:/junit"/>
 	
    <path id = "classpath.base"/>
@@ -14,9 +13,7 @@
    </path>
 	
    <target name = "clean" >
-      <delete verbose = "${full-compile}">
          <fileset dir = "${test.dir}" includes = "**/*.class" />
-      </delete>
    </target>
    
    <target name="prepare" depends="clean" description="Prepare for build">
@@ -24,8 +21,7 @@
    </target>
    
 	<target name = "compile" depends = "prepare">
-		<javac srcdir = "${srcdir}" destdir = "${test.dir}" 
-			verbose = "${full-compile}">
+		<javac srcdir = "${srcdir}" destdir = "${test.dir}">
 			<classpath refid = "classpath.test"/>
 		</javac>
 	</target>
