@@ -8,6 +8,10 @@
    <pathelement location = "${test.dir}" />
    <pathelement location = "${srcdir}" />
 	
+   <target name = "clean" >
+         <fileset dir = "${test.dir}"/>
+   </target>
+	
    <target name="prepare" depends="clean" description="Prepare for build">
 	 <mkdir dir="${basedir}/${result.dir}" />
    </target>
