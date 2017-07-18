@@ -1,6 +1,6 @@
 <project name = "PrimeNumCheck" basedir = "." default = "main">
    <property name = "test.dir" location = "main" />
-   <property name = "src.dir" location = "src" />
+   <property name = "srcdir" location = "src" />
    <property name = "result.dir" value = "result" />
    <property name = "full-compile" value = "true" />
    <property name="LIB_HOME" value="D:/junit"/>
@@ -9,7 +9,7 @@
    <path id = "classpath.test">
 	  <pathelement location="${LIB_HOME}/lib/junit-4.10.jar"/>
       <pathelement location = "${test.dir}" />
-      <pathelement location = "${src.dir}" />
+      <pathelement location = "${srcdir}" />
       <path refid = "classpath.base" />
    </path>
 	
@@ -24,7 +24,7 @@
    </target>
    
 	<target name = "compile" depends = "prepare">
-		<javac src.dir = "${src.dir}" destdir = "${test.dir}" 
+		<javac srcdir = "${srcdir}" destdir = "${test.dir}" 
 			verbose = "${full-compile}">
 			<classpath refid = "classpath.test"/>
 		</javac>
