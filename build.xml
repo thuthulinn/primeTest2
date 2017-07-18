@@ -11,7 +11,7 @@
    <target name = "clean" >
          <fileset dir = "${test.dir}" includes = "**/*.class" />
    </target>
-	
+   
    <target name="prepare" depends="clean" description="Prepare for build">
 	 <mkdir dir="${basedir}/${result.dir}" />
    </target>
@@ -37,4 +37,6 @@
       </junitreport>
 	 </target>
 
+	
 </project>
+
