@@ -1,0 +1,51 @@
+<project name = "PrimeNumCheck" basedir = "." default = "main">
+   <property name = "test.dir" location = "main" />
+   <property name = "src.dir" location = "src" />
+   <property name = "result.dir" value = "result" />
+   <property name = "full-compile" value = "true" />
+   <property name="LIB_HOME" value="D:/junit"/>
+	
+   <path id = "classpath.base"/>
+   <path id = "classpath.test">
+	  <pathelement location="${LIB_HOME}/lib/junit-4.10.jar"/>
+      <pathelement location = "${test.dir}" />
+      <pathelement location = "${src.dir}" />
+      <path refid = "classpath.base" />
+   </path>
+	
+   <target name = "clean" >
+      <delete verbose = "${full-compile}">
+         <fileset dir = "${test.dir}" includes = "**/*.class" />
+      </delete>
+   </target>
+   
+   <target name="prepare" depends="clean" description="Prepare for build">
+	 <mkdir dir="${basedir}/${result.dir}" />
+   </target>
+   
+	<target name = "compile" depends = "prepare">
+		<javac src.dir = "${src.dir}" destdir = "${test.dir}" 
+			verbose = "${full-compile}">
+			<classpath refid = "classpath.test"/>
+		</javac>
+	</target>
+
+   <target name = "main" depends = "compile">
+      <junit printsummary="true" haltonfailure="false">
+		<classpath refid = "classpath.test" />
+         <formatter type = "xml" usefile = "true" />
+         <test name = "PrimeNumberCheckerTest" />
+      </junit>
+	</target>
+	  
+	<target name="test-reports" depends="main">
+     <junitreport todir="${result.dir}">
+        <fileset dir="${result.dir}">
+            <include name="TEST-*.xml" />
+        </fileset>
+        <report format="frames" todir="${result.dir}" />
+      </junitreport>
+	 </target>
+
+	
+</project>
